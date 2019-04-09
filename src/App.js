@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Board from './Board';
-import AddPlayerForm from './AddPlayerForm';
+import PlayerForm from './PlayerForm';
 import PlayingField from './PlayingField';
 import StatusBar from './StatusBar';
 
@@ -29,61 +29,7 @@ class Scoreboard extends Component {
         this.checkPlayerHits = this.checkPlayerHits.bind(this);
         this.endOfRound = this.endOfRound.bind(this);
     }
-
-    render () {
-        return (
-			<div>
-				<div className="scoreboard">
-                    <div className="header">
-                        <table className="stats">
-                            <tbody>
-                                <tr>
-                                    <td>Players:</td>
-                                    <td>{this.state.players.length}</td>
-                                </tr>
-                                <tr>
-                                    <td>Total Kills:</td>
-                                    <td>tbc</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h1>Scoreboard</h1>
-                    </div>
-					<Board
-						players={this.state.players}
-                        currentPlayer={this.state.players}
-                        handleScoreUpdate={this.handleScoreUpdate}
-                        handleRemovePlayer={this.handleRemovePlayer}
-					/>
-					<AddPlayerForm
-						onPlayerSubmit={this.onPlayerSubmit}
-						onFormInput={this.onFormInput}
-						formValue={this.state.formValue}
-					/>
-				</div>
-                <div className="statusbar">
-                    <StatusBar
-                        handleStartGame={this.handleStartGame}
-                        gameStart={this.state.gameStart}
-                        players={this.state.players}
-                        gameStatus={this.state.gameStatus}
-                        currentPlayer={this.state.currentPlayer}
-                    />
-                </div>
-				<div className={`playingField pf-${this.state.players.length}`}>
-					<PlayingField
-                        players={this.state.players}
-                        handlePlayerTurn={this.handlePlayerTurn}
-                        gameStart={this.state.gameStart}
-                        gameStatus={this.state.gameStatus}
-                        currentPlayer={this.state.currentPlayer}
-                        confirmPlayerAction={this.confirmPlayerAction}
-					/>
-				</div>
-			</div>
-        )
-    }
-
+    
     onFormInput (event) {
         this.setState({
             formValue: event.target.value
@@ -95,12 +41,6 @@ class Scoreboard extends Component {
         event.preventDefault();
 
         let players = this.state.players;
-
-        // players[(Math.random() * 100000).toFixed(0)].push({
-        //     name: this.state.formValue,
-        //     score: 0,
-        //     turnTaken: false
-        // });
 
         players.push({
             id: (Math.random() * 100000).toFixed(0),
@@ -258,6 +198,60 @@ class Scoreboard extends Component {
     endOfRound () {
         this.checkPlayerHits()
         this.resetTurnsTaken()
+    }
+
+    render () {
+        return (
+			<div>
+				<div className="scoreboard">
+                    <div className="header">
+                        <table className="stats">
+                            <tbody>
+                                <tr>
+                                    <td>Players:</td>
+                                    <td>{this.state.players.length}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Kills:</td>
+                                    <td>tbc</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h1>Scoreboard</h1>
+                    </div>
+					<Board
+						players={this.state.players}
+                        currentPlayer={this.state.players}
+                        handleScoreUpdate={this.handleScoreUpdate}
+                        handleRemovePlayer={this.handleRemovePlayer}
+					/>
+					<PlayerForm
+						onPlayerSubmit={this.onPlayerSubmit}
+						onFormInput={this.onFormInput}
+						formValue={this.state.formValue}
+					/>
+				</div>
+                <div className="statusbar">
+                    <StatusBar
+                        handleStartGame={this.handleStartGame}
+                        gameStart={this.state.gameStart}
+                        players={this.state.players}
+                        gameStatus={this.state.gameStatus}
+                        currentPlayer={this.state.currentPlayer}
+                    />
+                </div>
+				<div className={`playingField pf-${this.state.players.length}`}>
+					<PlayingField
+                        players={this.state.players}
+                        handlePlayerTurn={this.handlePlayerTurn}
+                        gameStart={this.state.gameStart}
+                        gameStatus={this.state.gameStatus}
+                        currentPlayer={this.state.currentPlayer}
+                        confirmPlayerAction={this.confirmPlayerAction}
+					/>
+				</div>
+			</div>
+        )
     }
 }
 

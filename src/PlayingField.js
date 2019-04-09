@@ -15,7 +15,7 @@ const PlayingField = (props) => {
                 key={i}
                 onClick={handlePlayerTurn.bind(null, i, gameStatus)}
             >
-                {/* render current player's tank when it's their go, this logic will basically check to see if the game has started and if so, will render the tank according to the 'currentPos' property for the player which is nested inside the 'currentGame' property on the state     */}
+                {/* render current player's tank when it's their go, this logic will check to see if the game has started and if so, will render the tank according to the 'currentPos' property for the player which is nested inside the 'currentGame' property on the state     */}
                  <p>{ currentPlayer.currentPos === i ? 'YOUR TANK' : null  }</p> 
 
                 {/* render targetTile locations */}

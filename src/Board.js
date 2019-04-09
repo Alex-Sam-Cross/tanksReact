@@ -1,6 +1,5 @@
 import React from 'react';
-
-// STATELESS COMPONENT, child of Scoreboard.js
+// STATELESS COMPONENT, child of App.js
 function Board (props) {
     const { players, handleScoreUpdate, handleRemovePlayer } = props;
 
