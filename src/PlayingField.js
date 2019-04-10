@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 const PlayingField = (props) => {
     const { players, handlePlayerTurn, gameStart, gameStatus, currentPlayer, confirmPlayerAction } = props;
     const gridSize = Math.pow(players.length + 1, 2);
@@ -16,21 +15,18 @@ const PlayingField = (props) => {
                 onClick={handlePlayerTurn.bind(null, i, gameStatus)}
             >
                 {/* render current player's tank when it's their go, this logic will check to see if the game has started and if so, will render the tank according to the 'currentPos' property for the player which is nested inside the 'currentGame' property on the state     */}
-                 <p>{ currentPlayer.currentPos === i ? 'YOUR TANK' : null  }</p> 
+                <p>{ currentPlayer.currentPos === i ? 'YOUR TANK' : null  }</p> 
 
                 {/* render targetTile locations */}
-                 <p>{ currentPlayer.targetTile === i ? 'YOUR SHOT' : null  }</p> 
-
-                
-                 <button onClick={confirmPlayerAction.bind(null, currentPlayer, players, gameStatus)}> 
-                     { currentPlayer.currentPos === i ? 'CONFIRM' : null  }
-                     { currentPlayer.targetTile === i ? 'CONFIRM' : null  }
-                 </button>
-
+                <p>{ currentPlayer.targetTile === i ? 'YOUR SHOT' : null  }</p> 
+ 
+                <button onClick={confirmPlayerAction.bind(null, currentPlayer, players, gameStatus)}> 
+                    { currentPlayer.currentPos === i ? 'CONFIRM' : null  }
+                    { currentPlayer.targetTile === i ? 'CONFIRM' : null  }
+                </button>
             </div>
         )
     })
-
 }
 
 export default PlayingField;

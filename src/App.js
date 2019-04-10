@@ -14,7 +14,7 @@ class Scoreboard extends Component {
             formValue: '',
             gameStart: false,
             gameStatus: ''
-        }
+        };
 
         this.onPlayerSubmit = this.onPlayerSubmit.bind(this);
         this.onFormInput = this.onFormInput.bind(this);
@@ -33,7 +33,7 @@ class Scoreboard extends Component {
     onFormInput (event) {
         this.setState({
             formValue: event.target.value
-        })
+        });
     }
 
     onPlayerSubmit (event) {
@@ -52,7 +52,7 @@ class Scoreboard extends Component {
         this.setState({
             players: players,
             formValue: ''
-        })
+        });
 
     }
 
@@ -63,18 +63,18 @@ class Scoreboard extends Component {
 
         this.setState({
             players: updatedPlayers
-        })
+        });
 
     }
 
     handleRemovePlayer (i) {
         const updatedPlayers = this.state.players.filter(function (player, index) {
             return index !== i;
-        })
+        });
 
         this.setState({
             players: updatedPlayers
-        })
+        });
     }
 
     handleStartGame () {
@@ -85,7 +85,7 @@ class Scoreboard extends Component {
         // remove all player buttons
         const playerButtons = document.querySelectorAll('.removePlayerButton');
         playerButtons.forEach(function (playerButton) {
-            playerButton.parentElement.removeChild(playerButton)
+            playerButton.parentElement.removeChild(playerButton);
         });
 
         let updateState = this.state;
@@ -103,10 +103,10 @@ class Scoreboard extends Component {
             currentPlayer: updateState.currentPlayer,
             gameStatus: updateState.gameStatus,
             players: updateState.players
-        })
+        });
     }
 
-    getNextPlayer() {
+    getNextPlayer () {
         const players = this.state.players;
 
         for (const player of players) {
@@ -138,7 +138,7 @@ class Scoreboard extends Component {
         // this next line is quite cool. the button which fires 'confirmPlayerMove' is a CHILD of the button which handles 'handlePlayerTurn' (in the HTML). Due to event bubbling, whenever an event is triggered a child, it also 'bubbles up' to the parent, causing the parent to fire it's handler, passing in that event. (As if itself was just triggered). This cause a problem because every time we want to confirmPlayerMove, we are also inadvertently calling the handlePlayerTurn handler above, which overwrites the state that was just set in this handler. PHEW! So, in order to stop that bubbling behaviour, we call this native DOM API method.
         event.stopPropagation();
 
-        if(gameStatus === 'positioning'){
+        if (gameStatus === 'positioning') {
             this.setState({ gameStatus: 'firing' });
         } else {
             this.setCurrentPlayerTurn(true);
@@ -146,26 +146,24 @@ class Scoreboard extends Component {
                 gameStatus: 'positioning',
                 currentPlayer: this.getNextPlayer(true)
             });
-
         }
 
-        function findNextPlayer (prevState) {
-            const playersArray = this.state.players;
-
-            for (let i = 0; i < playersArray.length; i++) {
-                if (!prevState.currentGame[playersArray[i].name].takenTurn) {
-                    return playersArray[i];
-                }
-            }
-        }
+        // function findNextPlayer (prevState) {
+        //     const playersArray = this.state.players;
+        //     for (let i = 0; i < playersArray.length; i++) {
+        //         if (!prevState.currentGame[playersArray[i].name].takenTurn) {
+        //             return playersArray[i];
+        //         }
+        //     }
+        // }
     }
 
-    setCurrentPlayerTurn(turnTaken) {
+    setCurrentPlayerTurn (turnTaken) {
         // set the current players turn taken to true
         // change current player to next player in array
         let currentPlayer = this.state.currentPlayer;
 
-        if(turnTaken){
+        if (turnTaken) {
             currentPlayer.turnTaken = true;
         } else {
             // end of round so reset players
@@ -174,7 +172,7 @@ class Scoreboard extends Component {
 
         this.setState({
             currentPlayer: this.getNextPlayer()
-        })
+        });
     }
 
     resetTurnsTaken () {
@@ -188,7 +186,7 @@ class Scoreboard extends Component {
 
         this.setState({
             players: players
-        })
+        });
     }
 
     checkPlayerHits () {
@@ -196,8 +194,8 @@ class Scoreboard extends Component {
     }
 
     endOfRound () {
-        this.checkPlayerHits()
-        this.resetTurnsTaken()
+        this.checkPlayerHits();
+        this.resetTurnsTaken();
     }
 
     render () {
@@ -251,7 +249,7 @@ class Scoreboard extends Component {
 					/>
 				</div>
 			</div>
-        )
+        );
     }
 }
 
