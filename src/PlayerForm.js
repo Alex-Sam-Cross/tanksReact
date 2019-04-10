@@ -1,6 +1,6 @@
 import React from 'react';
 
-// STATELESS COMPONENT, child of Scoreboard.js
+// STATELESS COMPONENT, child of App.js
 function PlayerForm (props) {
     return (
         <div className="addPlayerForm">
@@ -17,7 +17,7 @@ function PlayerForm (props) {
                 </button>
             </form>
         </div>
-    )
+    );
 }
 
 export default PlayerForm;

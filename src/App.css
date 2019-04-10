@@ -4,6 +4,7 @@ body {
   text-transform: uppercase;
 }
 
+/* // SCOREBOARD - Player info */
 .scoreboard {
   background: #333;
   box-shadow: 0 4px 0px #333;
@@ -22,7 +23,6 @@ body {
   left: 30%;
 }
 
-/* // SCOREBOARD - Player info */
 .header {
   padding: 5px 10px;
   text-align: center;
@@ -97,18 +97,6 @@ body {
 }
 
 /* // PLAYING FIELD */
-  .statusbar{
-    background: blue;
-    box-shadow: 0 4px 0px #333;
-    border-radius: 15px;
-    width: 500px;
-    margin: 5px;
-    text-align: center;
-  }
-  .startBtn{
-    margin: 5px;
-  }
-/* // PLAYING FIELD */
 
 .playingField {
   display: grid;
@@ -142,4 +130,16 @@ body {
 
 .nextPlayerReadyButton {
   display: none;
+}
+
+.statusbar{
+  background: blue;
+  box-shadow: 0 4px 0px #333;
+  border-radius: 15px;
+  width: 500px;
+  margin: 5px;
+  text-align: center;
+}
+.startBtn{
+  margin: 5px;
 }

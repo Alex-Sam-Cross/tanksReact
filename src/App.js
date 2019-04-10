@@ -95,7 +95,7 @@ class Scoreboard extends Component {
         updateState.gameStatus = 'positioning';
         updateState.players.map((player, i) => {
             player.currentPos = i,
-            player.targetTile = null
+            player.targetTile = null;
         });
 
         this.setState({
@@ -131,7 +131,7 @@ class Scoreboard extends Component {
 
         this.setState({
             currentPlayer: currentPlayer
-        })
+        });
     }
 
     confirmPlayerAction (currentPlayer, players, gameStatus, event) {
